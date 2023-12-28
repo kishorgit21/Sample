@@ -1,11 +1,12 @@
 name: hello-world
-on: push:
-      branches:
-        - main
-      paths-ignore:
-        - '**/*.md'
-        - '**/*.gitignore'
-        - '**/*.gitattributes'
+on: 
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.gitignore'
+      - '**/*.gitattributes'
 
 env:
   AZURE_WEBAPP_NAME: aspnet-core-sample-deploy  # set this to your application's name
