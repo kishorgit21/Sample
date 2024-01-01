@@ -14,7 +14,7 @@ env:
   NETCORE_VERSION: '7.0.x'                    # set this to the .NET Core version to use
 
 permissions:
-  cotents: write
+  contents: write
 
 jobs:
   my-job:
