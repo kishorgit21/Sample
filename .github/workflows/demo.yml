@@ -40,5 +40,5 @@ jobs:
       - name: Deploy to github pages
         uses: jamesives/github-pages-deploy-action@4.1.0
         with: 
-          brach: samplepages
+          branch: samplepages
           folder: build
