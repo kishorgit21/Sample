@@ -41,4 +41,4 @@ jobs:
         uses: jamesives/github-pages-deploy-action@4.1.0
         with: 
           branch: samplepages
-          folder: build
+          folder: TestBuild
