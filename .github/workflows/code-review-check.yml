@@ -1,0 +1,24 @@
+name: Code Review Check
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+jobs:
+  code-review-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check for Code Review Approvals
+        run: |
+          APPROVALS=$(gh pr review-list --json state \
+                       | jq '.[] | select(.state == "APPROVED")' \
+                       | wc -l)
+          
+          if [ $APPROVALS -lt 1 ]; then
+            echo "Error: At least 1 approving review is required before merging."
+            exit 1
+          fi
