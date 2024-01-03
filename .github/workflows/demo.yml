@@ -1,5 +1,26 @@
 name: Build and Deploy
-on: 
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+jobs:
+  code-review-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check for Code Review Approvals
+        run: |
+          APPROVALS=$(gh pr review-list --json state \
+                       | jq '.[] | select(.state == "APPROVED")' \
+                       | wc -l)
+          
+          if [ $APPROVALS -eq 0 ]; then
+            echo "Error: Code review approvals required before merging."
+            exit 1
+  on: 
   push:
     branches:
       - main
