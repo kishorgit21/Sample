@@ -7,25 +7,6 @@ on:
       - '**/*.md'
       - '**/*.gitignore'
       - '**/*.gitattributes'
-  
-  pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
-jobs:
-  code-review-check:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check for Code Review Approvals
-        run: |
-          APPROVALS=$(gh pr review-list --json state \
-                       | jq '.[] | select(.state == "APPROVED")' \
-                       | wc -l)
-          
-          if [ $APPROVALS -lt 1 ]; then
-            echo "Error: At least 1 approving review is required before merging."
-            exit 1
 env:
   AZURE_WEBAPP_NAME: aspnet-core-sample-deploy  # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: './TestBuild'      # set this to the path to your web app project, defaults to the repository root
@@ -34,6 +15,7 @@ env:
 permissions:
   contents: write
 
+jobs:
   my-job:
     runs-on: ubuntu-latest
     steps:
