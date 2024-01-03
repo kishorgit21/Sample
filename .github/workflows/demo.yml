@@ -7,7 +7,6 @@ on:
       - '**/*.md'
       - '**/*.gitignore'
       - '**/*.gitattributes'
-
 env:
   AZURE_WEBAPP_NAME: aspnet-core-sample-deploy  # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: './TestBuild'      # set this to the path to your web app project, defaults to the repository root
