@@ -34,7 +34,6 @@ env:
 permissions:
   contents: write
 
-jobs:
   my-job:
     runs-on: ubuntu-latest
     steps:
